@@ -1,0 +1,56 @@
+body {
+    background-color: #F2E9DC;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.card {
+    background-color: #595959;
+    width: 80%;
+    min-height: 500px;
+    
+}
+
+.card-text {
+    background-color: #F96900;
+    width: 70%;
+    justify-content: center;
+    margin-inline: auto;
+    margin-top: 2.5rem;
+    border-radius: 15px;
+}
+
+.inner-card {
+    background-color: #808F85;
+    margin-inline: auto;
+    width: 100%;
+}
+
+.input-group {
+    max-width: 70%;
+    margin-inline: auto;
+    margin-block: 1.5rem;
+}
+
+.controls {
+    margin-top: 2rem;
+    gap: 1rem;
+}
+
+.btn {
+    background-color: #91C499;
+    border: none;
+}
+
+.reset {
+    background-color: red;
+    margin-block: 1rem;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

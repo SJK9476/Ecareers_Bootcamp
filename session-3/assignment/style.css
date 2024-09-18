@@ -1,0 +1,91 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100dvh;
+  background-color: antiquewhite;
+  font-family: Arial, Helvetica, sans-serif;
+
+}
+
+body {
+  padding: 1rem;
+}
+
+.container {
+  display: grid;
+  height: 100%;
+  gap: 1.5rem;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  grid-template-areas: 
+  'greensection greensection greensection'
+  'yellowsection redsection bluesection'
+  'yellowsection redsection bluesection'
+  'orangesection orangesection bluesection';
+}
+
+.bg-green, .bg-yellow, .bg-red, .bg-blue, .bg-orange {
+  padding: 1.5rem;
+}
+
+.bg-green {
+  background-color: rgb(186,255,201);
+  grid-area: greensection;
+
+}
+
+.bg-yellow {
+  background-color: rgb(255,255,186);
+  grid-area: yellowsection;
+}
+
+.bg-red {
+  background-color: rgb(255,186,186);
+  grid-area: redsection;
+}
+
+.bg-blue {
+  background-color: rgb(186,186,255);
+  grid-area: bluesection;
+}
+
+.bg-orange {
+  background-color: rgb(255,186,111);
+  grid-area: orangesection;
+}
+
+.bg-yellow h2, .bg-red h2 {
+  margin-bottom: 1rem;
+}
+
+.inner-box {
+  background-color: white;
+}
+
+.mini-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+
+.inner-box {
+  padding: 1rem;
+}
+
+@media screen and (max-width: 550px) {
+  .container {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-areas: 
+    'greensection'
+    'yellowsection'
+    'redsection'
+    'bluesection'
+    'orangesection';
+  }
+}

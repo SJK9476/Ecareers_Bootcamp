@@ -1,0 +1,88 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body {
+    background-color: darkred;
+}
+
+
+.tabs {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    background: red;
+    height: 4rem;
+    align-items: center;
+    justify-items: center;
+}
+
+.tabs div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.tabs a {
+    text-decoration: none;
+    font-size: 1.5rem;
+    color: white;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.active-tab {
+    background-color: darkred;
+    height: 100%;
+    width: 100%;
+}
+
+.content-1 {
+    display: grid;
+    padding: 2.5rem;
+    gap: 2rem;
+}
+
+.content-2 {
+    margin-top: 2rem;
+    padding: 1.5rem;
+}
+
+.content-3 {
+    margin-top: 2rem;
+    padding: 1.5rem;
+}
+
+.content-3 p {
+    margin-top: 2rem;
+    columns: 250px;
+}
+
+.content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    padding: 2rem;
+}
+
+h1 {
+    font-size: 3rem;
+    color: white;
+}
+
+p {
+    font-size: 1.5rem;
+    color: white;
+    line-height: 1.8;
+}
+
+
+
+
+
