@@ -1,0 +1,52 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculator App</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-stone-400 justify-center items-center flex font-mono">
+
+  <div id="calculator-wrapper" class="flex flex-col justify-center items-center h-[500px] bg-ox-blue p-4 rounded-lg">
+
+    <div id="calculator-inner" class="flex flex-col items-center justify-evenly bg-charcoal h-full w-full rounded-lg px-6 text-white">
+
+      <h1 class="text-3xl">Calculator</h1>
+      
+        <div class="flex gap-2 items-center flex-wrap justify-center">
+          <label for="firstNumber">First Number:</label>
+          <input type="number" name="firstNumber" id="firstNumber" placeholder="Type Here" class="p-2 text-black rounded-full text-center">
+        </div>
+
+        <div class="flex gap-2 items-center flex-wrap justify-center">
+          <label for="secondNumber">Second Number:</label>
+          <input type="number" name="secondNumber" id="secondNumber" placeholder="Type Here" class="p-2 text-black rounded-full text-center">
+        </div>
+      
+      <div id="calc-buttons" class="flex justify-evenly w-full flex-wrap gap-2">
+        <button id="add" class="border-solid border-2 px-4 rounded-xl" onclick="add()">Add</button>
+        <button id="subtract" class="border-solid border-2 px-4 rounded-xl" onclick="subtract()">Substract</button>
+        <button id="multiply" class="border-solid border-2 px-4 rounded-xl" onclick="multiply()">Multiply</button>
+        <button id="divide" class="border-solid border-2 px-4 rounded-xl" onclick="divide()">Divide</button>
+      </div>
+
+      <div id="result" class="bg-orange-400 w-full p-4 flex justify-evenly rounded-full">
+        <label for="calc-result" class="text-xl font-bold">Result:
+          
+        </label>
+        <div id="calc-result" class=""></div>
+      </div>
+
+      <button onclick="reset()" class="border-solid border-2 px-4 rounded-xl">Reset</button>
+      </div>
+
+      </div>  
+
+    </div>
+
+  </div>
+
+
+  <script src="script.js"></script>
+</body>
+</html>
