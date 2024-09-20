@@ -29,37 +29,53 @@ let itemArray = [
     }
 ];
 
-let newItemArray = [];
+// let newItemArray = [];
 
-function calculateValue () {
+// function calculateValue () {
 
-    itemArray.forEach((item) => {
+//     itemArray.forEach((item) => {
         
-        if(item.discount) {
-            let salePrice = (item.original - (item.original * item.discount)).toFixed(2);
+//         if(item.discount) {
+//             let salePrice = (item.original - (item.original * item.discount)).toFixed(2);
 
-            newItemArray.push({
-                item: item.item,
-                stock: item.stock,
-                original: item.original,
-                discount: item.discount,
-                Sale: salePrice,
-                total: (salePrice * item.stock).toFixed(2),
-            })
-        } else {
-            newItemArray.push(
-                {
-                    item: item.item,
-                    stock: item.stock,
-                    original: item.original,
-                    total: (item.original * item.stock).toFixed(2),
-                }
-            )
-        }
-    })
+//             newItemArray.push({
+//                 item: item.item,
+//                 stock: item.stock,
+//                 original: item.original,
+//                 discount: item.discount,
+//                 Sale: salePrice,
+//                 total: (salePrice * item.stock).toFixed(2),
+//             })
+//         } else {
+//             newItemArray.push(
+//                 {
+//                     item: item.item,
+//                     stock: item.stock,
+//                     original: item.original,
+//                     total: (item.original * item.stock).toFixed(2),
+//                 }
+//             )
+//         }
+//     })
 
+// }
+
+// calculateValue();
+
+// console.log(newItemArray);
+
+let updatedSalesTotal = salesTotal(itemArray);
+console.log(updatedSalesTotal);
+
+function salesTotal(itemArray){
+    let updatedItems = 
+    itemArray.map(inputSale => {
+        let {original, discount=0.0} = inputSale
+        inputSale['sale'] = (original - original * discount).toFixed(2)
+        inputSale['total'] = (inputSale.sale * inputSale.stock).toFixed(2)
+        return inputSale
+    });
+    return updatedItems
 }
 
-calculateValue();
-
-console.log(newItemArray);
+// .map is more efficient when dealing with arrrays due to it automatically returning a new array. Avoids the need to declare an empty array variable.
