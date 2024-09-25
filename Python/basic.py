@@ -18,9 +18,9 @@
 # print(text1.find('Batman'))
 
 strings = ['HELLO', 'WORLD']
+print(strings)
 strings.reverse()
 print(" ".join(strings))
-
 
 
 
