@@ -18,9 +18,11 @@
 # print(text1.find('Batman'))
 
 strings = ['HELLO', 'WORLD']
-print(strings)
-strings.reverse()
-print(" ".join(strings))
+str1 = 'HELLO'
+str2 = 'WORLD'
+newStr = [str1, str2]
+newStr.reverse()
+print(" ".join(newStr))
 
 
 
