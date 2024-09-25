@@ -37,18 +37,28 @@
 #and prints the extension of the file
 
 
-file = input("Enter file name with extension: ")
+# file = input("Enter file name with extension: ")
 
-if '.' not in file:
-    print("Invalid file name, must contain valid extension type")
-    exit()
+# if '.' not in file:
+#     print("Invalid file name, must contain valid extension type")
+#     exit()
 
-else:
-    file = file.split('.')[1]
+# else:
+#     file = file.split('.')
+#     print("The extension of the file is: ", file[-1])
 
-extension = file.split('.')[0]
-print(extension)
 
+#Input an integer n and compute the value of n+nn+nnn
+#example: 5 compute 5+55+555
+
+
+n = input("Enter a number: ")
+
+str2 = n + n
+str3 = n + str2
+
+
+print('{} + {} + {} = {}'.format(n, str2, str3, int(n) + int(str2) + int(str3)))
 
 
 
