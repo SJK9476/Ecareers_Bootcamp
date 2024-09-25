@@ -18,6 +18,10 @@
 # print(text1.find('Batman'))
 
 strings = ['HELLO', 'WORLD']
+strings.reverse()
+print(" ".join(strings))
+
+
 str1 = 'HELLO'
 str2 = 'WORLD'
 newStr = [str1, str2]
