@@ -17,19 +17,37 @@
 
 # print(text1.find('Batman'))
 
-strings = ['HELLO', 'WORLD']
-strings.reverse()
-print(" ".join(strings))
+#Write a python program to get a single string from two given strings
+#separated by space and swap the string.
+#Sample input: 'abc','xyz'
+#Expected output: 'xyz abc'
+
+# strings = ['HELLO', 'WORLD']
+# strings.reverse()
+# print(" ".join(strings))
 
 
-str1 = 'HELLO'
-str2 = 'WORLD'
-newStr = [str1, str2]
-newStr.reverse()
-print(" ".join(newStr))
+# str1 = 'HELLO'
+# str2 = 'WORLD'
+# newStr = [str1, str2]
+# newStr.reverse()
+# print(" ".join(newStr))
+
+#Write a python program that accepts a filname with extension from the user
+#and prints the extension of the file
 
 
+file = input("Enter file name with extension: ")
 
+if '.' not in file:
+    print("Invalid file name, must contain valid extension type")
+    exit()
+
+else:
+    file = file.split('.')[1]
+
+extension = file.split('.')[0]
+print(extension)
 
 
 
