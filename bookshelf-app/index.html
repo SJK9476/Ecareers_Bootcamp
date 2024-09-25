@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bookshelf App</title>
+  </head>
+  <body>
+
+    <div class="container px-4 m-auto mt-4 font-">
+
+    <header>
+
+      <div id="page-header" class="bg-blue-400 rounded-lg p-4 text-center">
+        <h1 class="text-4xl text-blue-900 font-bold">Bookshelf App</h1>
+      </div>
+
+    </header>
+    <main>
+      <div class="grid grid-cols-3 w-full mt-4 gap-4">
+
+        <div class="left-card border-2 rounded-lg w-full text-lg p-4">
+
+          <form id="form" class="flex flex-col gap-4">
+
+            <input type="hidden" name="id" id="bookId">
+
+            <div class="flex flex-col">
+              <label for="title">Title</label>
+              <input type="text" id="title" placeholder="Book Title" class="p-1 rounded-md border-solid border border">
+            </div>
+
+            <div class="flex flex-col">
+              <label for="author">Author</label>
+              <input type="text" id="author" placeholder="Author" class="p-1 rounded-md border-solid border">
+            </div>
+
+            <div class="flex flex-col">
+              <label for="year">Year</label>
+              <input type="number" id="year" placeholder="YYYY" class="p-1 rounded-md border-solid border border">
+            </div>
+
+            <div class="flex gap-2 justify-center">
+              <label for="bookFinished">Finished reading</label>
+              <input type="checkbox" name="bookFinished" id="bookFinished">
+            </div>
+
+            <div class="btn-group flex justify-center gap-4">
+              <button class="bg-blue-400 hover:bg-blue-700 px-2 py-1 rounded-lg text-white" onclick="save()">Save</button>
+              <button class="bg-red-400 hover:bg-red-700 px-2 py-1 rounded-lg text-white" onclick="reset()">Reset</button>
+            </div>
+
+          </form>
+        </div>
+        <div class="right-card col-span-2 border-2 rounded-lg w-full h-fit text-lg p-4 flex flex-col gap-4">
+
+          <div>
+            <h2 class="text-2xl font-bold mb-4">Unread</h2>
+            <table class="w-full" id="dataTable">
+              <thead>
+                <tr>
+                  <th>No</th>
+                  <th>Title</th>
+                  <th>Author</th>
+                  <th>Year</th>
+                  <th>Read</th>
+                  <th>Edit</th>
+                  <th>Delete</th>
+                </tr>
+              </thead>
+              <tbody id="unreadTable">
+              </tbody>
+            </table>
+          </div>
+          <hr>
+          <div>
+            <h2 class="text-2xl font-bold mb-4">Read</h2>
+            <table class="w-full" id="tableData2">
+              <thead>
+                <tr>
+                  <th>No</th>
+                  <th>Title</th>
+                  <th>Author</th>
+                  <th>Year</th>
+                  <th>Read</th>
+                  <th>Edit</th>
+                  <th>Delete</th>
+                </tr>
+              </thead>
+              <tbody id="readTable">
+              </tbody>
+            </table>
+          </div>
+          <hr>
+
+        </div>
+      </div>
+
+    </main>
+
+
+  
+    </div>
+
+    <script type="module" src="/main.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
