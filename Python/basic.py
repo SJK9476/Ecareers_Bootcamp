@@ -52,14 +52,16 @@
 #example: 5 compute 5+55+555
 
 
-n = input("Enter a number: ")
+# n = input("Enter a number: ")
 
-str2 = n + n
-str3 = n + str2
-
-
-print('{} + {} + {} = {}'.format(n, str2, str3, int(n) + int(str2) + int(str3)))
+# str2 = n + n
+# str3 = n + str2
 
 
+# print('{} + {} + {} = {}'.format(n, str2, str3, int(n) + int(str2) + int(str3)))
 
+nums = [2]
 
+nums.append(5)
+
+print(nums)
