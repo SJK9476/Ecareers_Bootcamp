@@ -129,12 +129,12 @@
 # Output:
 # {'Ten': 10, 'Twenty': 20, 'Thirty': 30}
 
-keys = ['Ten', 'Twenty', 'Thirty', 'Forty']
-values = [10, 20, 30]
+# keys = ['Ten', 'Twenty', 'Thirty', 'Forty']
+# values = [10, 20, 30]
 
-dict1 = dict(zip(keys, values))
+# dict1 = dict(zip(keys, values))
 
-print(dict1)
+# print(dict1)
 
 # result = {}
 
@@ -150,7 +150,28 @@ print(dict1)
 #   200 present in a dict
 
 
-dict = {'a': 100, 'b': 200, 'c': 300}
+# dict = {'a': 100, 'b': 200, 'c': 300}
+
+# if 200 in dict.values():
+#     print ('true')
+
+# # print(200 in dict.values())
+
+# Get the key of a minimum value from the following dictionary
+# sample_dict = {
+#   'Physics': 82,
+#   'Math': 65,
+#   'history': 75
+# }
+# Output:
+#     Math
+
+sampleDict = {
+    'Physics': 82,
+    'Math': 65,
+    'history': 75}
 
 
-print(200 in dict.values())
+res = min(sampleDict, key=sampleDict.get)
+
+print(res)
