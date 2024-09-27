@@ -60,8 +60,18 @@
 
 # print('{} + {} + {} = {}'.format(n, str2, str3, int(n) + int(str2) + int(str3)))
 
-nums = [2]
+# nums = [2]
 
-nums.append(5)
+# nums.append(5)
 
-print(nums)
+# print(nums)
+
+list = [2, 4, 6, 3]
+newList = []
+
+i = 0
+while i < len(list):
+    newList.append(list[i] * list[i])
+    i = i + 1
+
+print(newList)
