@@ -1,4 +1,5 @@
 import factorsModule
+import random
 
 # # str1 = "My name is {firstName}, I am {age} years old".format(firstName = 'Samuel', age = 30)
 # # str1 = "My name is {0}, I am {1} years old".format('Samuel', 30)
@@ -178,4 +179,10 @@ import factorsModule
 
 # print(res)
 
-factorsModule.printFactors(720)
+# factorsModule.printFactors(720)
+
+list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+random.shuffle(list)
+
+print(list)
