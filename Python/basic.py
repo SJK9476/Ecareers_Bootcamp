@@ -99,12 +99,18 @@
 # Input: list1 = [5, 10, 15, 20, 25, 50, 20]
 # Output: [5, 10, 15, 200, 25, 50, 20]
 
-list1 = [5, 10, 15, 20, 25, 50, 20]
+# list1 = [5, 10, 15, 20, 25, 50, 20]
 
-# i = list1.index(20)
-# list1[i] = 200
-# print(list1)
+# # i = list1.index(20)
+# # list1[i] = 200
+# # print(list1)
 
-newList = [item for item in list1 if item != 20]
+# newList = [item for item in list1 if item % 2 == 0]
 
-print(newList)
+# print(newList)
+
+tuple1 = (10, 20, 30, 40 , 50)
+
+newTuple = tuple1[::-1]
+
+print(newTuple)
