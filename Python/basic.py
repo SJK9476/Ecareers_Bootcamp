@@ -1,3 +1,5 @@
+import factorsModule
+
 # # str1 = "My name is {firstName}, I am {age} years old".format(firstName = 'Samuel', age = 30)
 # # str1 = "My name is {0}, I am {1} years old".format('Samuel', 30)
 # str1 = "My name is {}, I am {} years old".format('Samuel', 30)
@@ -166,12 +168,14 @@
 # Output:
 #     Math
 
-sampleDict = {
-    'Physics': 82,
-    'Math': 65,
-    'history': 75}
+# sampleDict = {
+#     'Physics': 82,
+#     'Math': 65,
+#     'history': 75}
 
 
-res = min(sampleDict, key=sampleDict.get)
+# res = min(sampleDict, key=sampleDict.get)
 
-print(res)
+# print(res)
+
+factorsModule.printFactors(720)
