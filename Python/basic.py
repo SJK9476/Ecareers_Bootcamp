@@ -100,11 +100,11 @@
 # Output: [5, 10, 15, 200, 25, 50, 20]
 
 list1 = [5, 10, 15, 20, 25, 50, 20]
-target = 20
-replacement = 200
 
-print(list1.index(target))
+# i = list1.index(20)
+# list1[i] = 200
+# print(list1)
 
-newList = [replacement if i == list1.index(target) else x for i, x in enumerate(list1)]
+newList = [item for item in list1 if item != 20]
 
 print(newList)
