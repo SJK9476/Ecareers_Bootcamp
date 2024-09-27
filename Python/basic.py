@@ -77,9 +77,34 @@
 # print(newList)
 
 
-list1 = ['Hello', 'take']
-list2 = ['Dear', 'Sir']
+# list1 = ['Hello', 'take']
+# list2 = ['Dear', 'Sir']
+# result = []
 
-newList = [item1 + " " + item2 for item1 in list1 for item2 in list2]
+# # Format below: expression then for loop then condition/nested for loop
+
+# # newList = [item1 + " " + item2 for item1 in list1 for item2 in list2]
+
+# # print(newList)
+
+# for txt1 in list1:
+#     for txt2 in list2:
+#         result.append(txt1 + " " + txt2)
+# print(result)
+
+# Write a program to find value 20 in the list,
+# and if it is present, replace it with 200.
+# Only update the first occurrence of an item.
+ 
+# Input: list1 = [5, 10, 15, 20, 25, 50, 20]
+# Output: [5, 10, 15, 200, 25, 50, 20]
+
+list1 = [5, 10, 15, 20, 25, 50, 20]
+target = 20
+replacement = 200
+
+print(list1.index(target))
+
+newList = [replacement if i == list1.index(target) else x for i, x in enumerate(list1)]
 
 print(newList)
