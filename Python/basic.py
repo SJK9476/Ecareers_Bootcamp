@@ -109,11 +109,32 @@
 
 # print(newList)
 
-tuple1 = (10, 20, 30, 40, 50)
+# tuple1 = (10, 20, 30, 40, 50)
 
-# newTuple = tuple1[::-1]
-# print(newTuple)
+# # newTuple = tuple1[::-1]
+# # print(newTuple)
 
-(a, b, c, d, e) = tuple1
+# (a, b, c, d, e) = tuple1
 
-print(a)
+# print(a)
+# print(b)
+# print(c)
+# print(d)
+# print(e)
+
+# Convert two lists into a dictionary
+# Input:
+# keys = ['Ten', 'Twenty', 'Thirty']
+# values = [10, 20, 30]
+# Output:
+# {'Ten': 10, 'Twenty': 20, 'Thirty': 30}
+
+keys = ['Ten', 'Twenty', 'Thirty']
+values = [10, 20, 30]
+
+result = {}
+
+for i in range(len(keys)):
+    result.update ({keys[i]: values[i]})
+
+print(result)
