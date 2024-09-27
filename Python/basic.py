@@ -66,12 +66,20 @@
 
 # print(nums)
 
-list = [2, 4, 6, 3]
-newList = []
+# list = [2, 4, 6, 3]
+# newList = []
 
-i = 0
-while i < len(list):
-    newList.append(list[i] * list[i])
-    i = i + 1
+# i = 0
+# while i < len(list):
+#     newList.append(list[i] * list[i])
+#     i = i + 1
+
+# print(newList)
+
+
+list1 = ['Hello', 'take']
+list2 = ['Dear', 'Sir']
+
+newList = [item1 + " " + item2 for item1 in list1 for item2 in list2]
 
 print(newList)
