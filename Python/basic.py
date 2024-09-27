@@ -129,12 +129,28 @@
 # Output:
 # {'Ten': 10, 'Twenty': 20, 'Thirty': 30}
 
-keys = ['Ten', 'Twenty', 'Thirty']
+keys = ['Ten', 'Twenty', 'Thirty', 'Forty']
 values = [10, 20, 30]
 
-result = {}
+dict1 = dict(zip(keys, values))
 
-for i in range(len(keys)):
-    result.update ({keys[i]: values[i]})
+print(dict1)
 
-print(result)
+# result = {}
+
+# for i in range(len(keys)):
+#     result.update ({keys[i]: values[i]})
+
+# print(result)
+
+#Write a Python program to check if value 200 exists in the following dictionary.
+#Input:
+#    sample_dict = {'a': 100, 'b': 200, 'c': 300}
+#Output:
+#   200 present in a dict
+
+
+dict = {'a': 100, 'b': 200, 'c': 300}
+
+
+print(200 in dict.values())
