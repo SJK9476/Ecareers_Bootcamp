@@ -111,6 +111,9 @@
 
 tuple1 = (10, 20, 30, 40, 50)
 
-newTuple = tuple1[::-1]
+# newTuple = tuple1[::-1]
+# print(newTuple)
 
-print(newTuple)
+(a, b, c, d, e) = tuple1
+
+print(a)
