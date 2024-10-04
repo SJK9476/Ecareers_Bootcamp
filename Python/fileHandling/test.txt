@@ -1,0 +1,2 @@
+Testing python file handling skills: open and insert this text in the file/n Insert to end of file
+Insert to end of file

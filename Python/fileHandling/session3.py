@@ -1,0 +1,26 @@
+# File Handling
+
+# import linecache
+
+# line = linecache.getline(r'Python\basic.py', 2)
+
+# print(line)
+
+# fp = open('C:/Users/king_/OneDrive/Desktop/Bootcamp Assignments/Python/test.txt', 'x')
+
+# fp.close()
+
+# import os
+
+# os.remove('C:/Users/king_/OneDrive/Desktop/Bootcamp Assignments/Python/test.txt')
+
+# fp = open('C:/Users/king_/OneDrive/Desktop/Bootcamp Assignments/Python/fileHandling/test.txt', 'w')
+# fp.write('Testing python file handling skills: open and insert this text in the file')
+# fp.close()
+
+fp = open('C:/Users/king_/OneDrive/Desktop/Bootcamp Assignments/Python/fileHandling/test.txt', 'a')
+fp.write('\nInsert to end of file')
+fp.close()
+
+
+ 
