@@ -44,10 +44,49 @@
 #         line = next(fp).strip()
 #         print(line)
 
-list = ['Hello', 'take', 'Dear', 'Sir']
+# list = ['Hello', 'take', 'Dear', 'Sir']
 
-with open('Python/fileHandling/newList.txt', 'w') as fp:
-    for items in list:
-        fp.write(items + '\n')
+# with open('Python/fileHandling/newList.txt', 'w') as fp:
+#     for items in list:
+#         fp.write(items + '\n')
 
-fp.close()        
+# fp.close()        
+
+# with open(r'Python/fileHandling/newList.txt') as file1, open(r'Python/fileHandling/newList2.txt') as file2:
+#     for line1, line2 in zip(file1, file2):
+#         print(line1+' '+line2)
+
+
+
+# try:
+#     number = int(input('Enter a number: '))
+#     result = 10 / number
+#     print(result)
+# except ZeroDivisionError:
+#     print('You cannot divide by zero!')
+# except ValueError:
+#     print('Invalid input!')
+# print('Program continues..')
+
+# class InvalidAgeException(Exception):
+#     'Age is less than 18 years old.'
+
+# number = int(input('Enter your age: '))
+
+# try:
+#     if number < 18:
+#         raise InvalidAgeException
+#     else:
+#         print('Age is valid.')
+# except InvalidAgeException:
+#     print('Age is less than 18 years old.')
+
+list = [1, 2, 3, 4, 5]
+indexChoice = int(input('Enter a number: '))
+
+try:
+    print(list[indexChoice])
+except IndexError:
+    print('Index out of range!')
+    
+
