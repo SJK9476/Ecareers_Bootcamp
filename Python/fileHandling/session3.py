@@ -90,12 +90,29 @@
 #     print('Index out of range!')
     
 
+# try:
+#     number1 = int(input('Enter a number: '))
+#     number2 = int(input('Enter another number: '))
+#     result = number1 / number2
+#     print(result)
+# except ZeroDivisionError:
+#     print('You cannot divide by zero!')
+# except ValueError:
+#     print('Invalid input! Please make sure to only input numbers.')
+
+class MinumumSalaryThresholdError(Exception):
+    'Salary is less than 10,000.'
+
+name = input('Enter your name: ')
+dept = input('Enter your department: ')
+salary = int(input('Enter your salary: '))
+
 try:
-    number1 = int(input('Enter a number: '))
-    number2 = int(input('Enter another number: '))
-    result = number1 / number2
-    print(result)
-except ZeroDivisionError:
-    print('You cannot divide by zero!')
-except ValueError:
-    print('Invalid input! Please make sure to only input numbers.')
+    if salary < 10000:
+        raise MinumumSalaryThresholdError
+    else:
+        print('Name: ', name)
+        print('Department: ', dept)
+        print('Salary: ', salary)
+except MinumumSalaryThresholdError:
+    print('Salary is less than 10,000!')
