@@ -44,6 +44,10 @@
 #         line = next(fp).strip()
 #         print(line)
 
-with open(r'Python/fileHandling/test.txt', 'r') as fp:
-    lines = fp.readlines()
-    print(lines)
+list = ['Hello', 'take', 'Dear', 'Sir']
+
+with open('Python/fileHandling/newList.txt', 'w') as fp:
+    for items in list:
+        fp.write(items + '\n')
+
+fp.close()        
