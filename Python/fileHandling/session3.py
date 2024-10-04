@@ -25,15 +25,25 @@
 # with open(r'Python/fileHandling/test.txt', 'a') as fp:
 #     fp.write('\nInsert to end of file using with statement')
 
-with open(r'Python/fileHandling/test.txt', 'r') as fp:
-    line_numbers = [0, 1]
+# with open(r'Python/fileHandling/test.txt', 'r') as fp:
+#     line_numbers = [0, 1]
 
-    lines = []
+#     lines = []
 
-    for i, line in enumerate(fp):
-        if i in line_numbers:
-            lines.append(line)
-        elif i > 1:
-            break
+#     for i, line in enumerate(fp):
+#         if i in line_numbers:
+#             lines.append(line)
+#         elif i > 1:
+#             break
     
-print(lines)
+# print(lines)
+
+# N=3
+# with open(r'Python/fileHandling/test.txt', 'r') as fp:
+#     for i in range(N):
+#         line = next(fp).strip()
+#         print(line)
+
+with open(r'Python/fileHandling/test.txt', 'r') as fp:
+    lines = fp.readlines()
+    print(lines)
