@@ -81,12 +81,21 @@
 # except InvalidAgeException:
 #     print('Age is less than 18 years old.')
 
-list = [1, 2, 3, 4, 5]
-indexChoice = int(input('Enter a number: '))
+# list = [1, 2, 3, 4, 5]
+# indexChoice = int(input('Enter a number: '))
 
-try:
-    print(list[indexChoice])
-except IndexError:
-    print('Index out of range!')
+# try:
+#     print(list[indexChoice])
+# except IndexError:
+#     print('Index out of range!')
     
 
+try:
+    number1 = int(input('Enter a number: '))
+    number2 = int(input('Enter another number: '))
+    result = number1 / number2
+    print(result)
+except ZeroDivisionError:
+    print('You cannot divide by zero!')
+except ValueError:
+    print('Invalid input! Please make sure to only input numbers.')
