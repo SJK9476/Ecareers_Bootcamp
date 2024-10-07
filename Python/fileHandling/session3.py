@@ -113,6 +113,6 @@ try:
     else:
         print('Name: ', name)
         print('Department: ', dept)
-        print('Salary: ', salary)
+        print('Salary:',salary, 'GBP')
 except MinumumSalaryThresholdError:
     print('Salary is less than 10,000!')

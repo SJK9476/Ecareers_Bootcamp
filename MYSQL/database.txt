@@ -1,0 +1,51 @@
+Relational Database: data will be stored in the form of tables and tasbles can be related to eachother.
+i.e. MySQL, Oracle, Postgresql, MySQL server
+
+Table headings are referred to as 'Fields' or columns
+
+EmpID       EmpName       EmpDept       JoinDate        EmpSalary
+101         Samuel        IT            10/10/24        30,000
+102         Mary          Sales          1/1/23         25,000
+
+Data types include integer(for numbers) and VarChar for strings/dates/eachother
+
+Constraints: The field that uniquely identifies each row is referred to as the Primary Key (always needs a valid value)
+             Unique Key (similar to primary however this can be NULL)
+             Not NULL - dependent on context
+             Check - usually used with integers (i.e. a minimum salary amount - data will not be entered if this constraint isn't met)
+
+
+Basic commands for creating a table in MySQL and storing a value to said table can be seen below:
+
+
+
+create database e_careers;
+use e_careers;
+create table employee (emp_id integer(6) primary key, emp_name varchar(20) not null, emp_dept varchar(10), 
+	emp_salary integer(7), joining_date date);
+    
+insert into employee values(102, 'James', 'Sales', 35000, '2023-06-04');                 
+(entry data needs to be in same order as table keys were specified above unless you specify a different order by inserting the new order before the new data example below:
+insert into employee (emp_name, emp_id, emp_dept, emp_salary, joining_date) values(102, 'James', 'Sales', 35000, '2023-06-04');)
+
+select * from employee
+
+
+The below syntax selects each record that has a letter 'e' as the second to last character in stud_name
+
+select *
+from student
+where stud_name like '%e_';
+
+
+
+The blow are aggregate functions built into SQL, the first adds up the total of all employee salaries, the second finds the lowest salary, third finds the highest salary
+
+select sum(emp_salary)
+from employee;
+
+select min(emp_salary)
+from employee;
+
+select max(emp_salary)
+from employee;
