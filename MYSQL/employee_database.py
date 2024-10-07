@@ -8,12 +8,15 @@ try:
     # Create a cursor object to execute SQL queries
 
     cursor=db_connection.cursor()
+    cursor1=db_connection.cursor()
 
     update_salary_query = "update employee set emp_salary= (emp_salary * 1.1)"
 
     cursor.execute(update_salary_query)
 
-    data = cursor.fetchall() #fetchone() & fetchmany(SIZE) are alternatives depending on how many rows you want to fetch
+    cursor1.execute("select * from employee")
+
+    data = cursor1.fetchall() #fetchone() & fetchmany(SIZE) are alternatives depending on how many rows you want to fetch
 
     for row in data:
         print("emp_id = ", row[0], )
