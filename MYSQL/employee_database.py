@@ -37,5 +37,6 @@ except mysql.connector.Error as error:
 finally:
     if db_connection.is_connected():
         cursor.close()
+        cursor1.close()
         db_connection.close()
         print("MySQL connection is closed")
