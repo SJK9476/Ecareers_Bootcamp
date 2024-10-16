@@ -62,6 +62,11 @@ function editAppointment(index) {
     document.getElementById('name').value = appointments[index].name
     document.getElementById('doctor').value = appointments[index].doctor
     document.getElementById('date').value = appointments[index].date
+
+    const [day, month, year] = appointments[index].date.split('/');
+    const dateForInput = `${year}-${month}-${day}`; 
+    document.getElementById('date').value = dateForInput;
+
     document.getElementById('time').value = appointments[index].time
     document.getElementById('ailment').value = appointments[index].ailment
     document.getElementById('notes').value = appointments[index].notes
