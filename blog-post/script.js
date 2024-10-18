@@ -1,35 +1,24 @@
-const posts = [];
+let posts
 let currentPostIndex = null
 
+function retrieveData() {
+    const url = 'https://jsonplaceholder.typicode.com/users'
 
+fetch(url)
+    .then(response => response.json())
+    .then(data => {
+        posts = data
+        console.log(data)
+        loadPosts()
+    })
+    .catch(error => {
+        console.log(error)
+    })
+}
 
-document.getElementById('blogForm').addEventListener('submit', (e) => {
-    e.preventDefault();
+retrieveData()
 
-    let title = document.getElementById('title').value;
-    let content = document.getElementById('content').value;
-    let wordCount = content.split(' ').length;
-
-    if (currentPostIndex !== null) {
-        posts[currentPostIndex] = { title, content };
-        currentPostIndex = null;
-    } else {
-
-        if (wordCount < 20) {
-            alert('Content must be at least 20 words');
-            return;
-        } else {
-            posts.push({ title, content });
-        }
-        
-    }
-
-        renderPost();
-        document.getElementById('blogForm').reset();
-
-})
-
-function renderPost(){
+function loadPosts(){
    
     let postContainer = document.getElementById('posts')
     postContainer.innerHTML = ''
@@ -39,8 +28,12 @@ function renderPost(){
     
         postElement.innerHTML = `
             <div class='card-body'>
-                <h3 clss="card-title">${post.title}</h3>
-                <p class="card-text">${post.content}</p>
+                <h3 clss="card-title">${post.name}</h3>
+                <p class="card-text">${post.username}</p>
+                <p class="card-text">${post.email}</p>
+                <p class="card-text">${post.address.suite}</p>
+                <p class="card-text">${post.phone}</p>
+                <p class="card-text">${post.website}</p>
                 <button class="btn btn-secondary" onclick="editPost(${index})">Edit</button>
                 <button class="btn btn-danger" onclick="deletePost(${index})">Delete</button>
             </div>    
