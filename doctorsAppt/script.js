@@ -1,4 +1,5 @@
 const appointments = []
+const searchResults = []
 let currentAppointmentIndex = null
 
 const today = new Date();
@@ -43,6 +44,7 @@ function renderAppointments() {
         let appt = document.createElement('div')
         appt.className = 'card mb-3'
         appt.innerHTML = `
+            
             <div class="card-body">
                 <h3 class='card-title'> Appointment with ${appointment.doctor} on ${appointment.date} at ${appointment.time}</h3>
                 <p class='card-text fs-5'>Condition: ${appointment.ailment}</p>
@@ -75,4 +77,45 @@ function editAppointment(index) {
 function deleteAppointment(index) {
     appointments.splice(index, 1)
     renderAppointments()
+}
+
+
+function searchPatients() {
+    let searchInput = document.getElementById('search').value
+
+    searchResults.length = 0
+    appointments.forEach((appointment) => {
+        if (appointment.name.toLowerCase().includes(searchInput.toLowerCase())) {
+            searchResults.push(appointment)
+        }
+    })
+
+    if (searchResults.length === 0) {
+        alert('No results found')
+    } else {
+        renderResults()
+    }
+    
+}
+
+function renderResults() {
+    let resultContainer = document.getElementById('result')
+    resultContainer.innerHTML = ''
+    searchResults.forEach((appointment, index) => {
+        let result = document.createElement('div')
+        result.className = 'card mb-3'
+        result.innerHTML = `
+            
+            <div class="card-body">
+                <h3 class='card-title'> Appointment with ${appointment.doctor} on ${appointment.date} at ${appointment.time}</h3>
+                <p class='card-text fs-5'>Condition: ${appointment.ailment}</p>
+                <p class='card-text fs-5'>Additional info for Doctor: ${appointment.notes}</p>
+                <button class="btn btn-secondary" onclick="editAppointment(${index})">Edit</button>
+                <button class="btn btn-danger" onclick="deleteAppointment(${index})">Delete</button>
+
+            </div>
+        `
+
+        resultContainer.appendChild(appt)
+    })
 }

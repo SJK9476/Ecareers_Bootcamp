@@ -1,40 +1,78 @@
-// // API = Application programming interface
-
-// https: hypertext transfer protocol secure
-
-// Different APIs:
-//     - Fetch API
-//     - Axios API
-//     - XMLHHttpRequest API
-
-// // Web services - One application can make a call to another application through internet
-//           ie: ecommerce site making a call to bank for payment
-
-// types: XML based: SOAP web service
-//                 : RESTful web service - request and response in JSON/XML/text/html/JS format
-
-
-function getData() {
-    const url  = "https://jsonplaceholder.typicode.com/users"
-
-fetch(url)
+// Web Services - One application makes a call to another application through internet
+// types: Xml based: SOAP web service
+//                 : RESTful Web service : json/xml/text/html
+//let users = []
+document.getElementById('blogForm').addEventListener('submit', (e)=>{
+    e.preventDefault();
+    const url = 'https://jsonplaceholder.typicode.com/users'
+    fetch(url)
     .then(response => response.json())
-    .then(data => {
-        console.log(data)
-    })
+     .then(data => {
+
+        
+         if(data.length > 0){
+            const newTable = document.createElement("table")
+            newTable.innerHTML = "<thead><th>User Name</th><th>Email</th></thead>"
+             data.forEach((user) =>{
+                const newRow = document.createElement("tr")
+                const tdName = document.createElement("td")
+                const tdEmail = document.createElement("td")
+                tdName.textContent = user.name
+                tdEmail.textContent = user.email
+                newRow.appendChild(tdName)
+                newRow.appendChild(tdEmail)
+                newTable.appendChild(newRow)
+            })
+            let userContainer = document.getElementById('users')
+            if (userContainer.innerHTML === '') {
+             userContainer.appendChild(newTable)}
+             else {
+                 return;
+             }
+         }
+     })
     .catch(error => {
         console.log(error)
     })
-}
+    //renderPost()
+   // renderTable()
+})    
 
-// http calls - GET, POST, PUT, DELETE
+// function renderTable(){
+//     const newTable = document.createElement("table")
+//     newTable.innerHTML = "<thead><th>User Name</th><th>Email</th></thead>"
+//     users.forEach((user) =>{
+//         const newRow = document.createElement("tr")
+//         const tdName = document.createElement("td")
+//         const tdEmail = document.createElement("td")
+//         tdName.textContent = user.name
+//         tdEmail.textContent = user.email
+//         newRow.appendChild(tdName)
+//         newRow.appendChild(tdEmail)
+//         newTable.appendChild(newRow)
+//     })
+//     let userContainer = document.getElementById('users')
+//     userContainer.appendChild(newTable)
+// }
 
-function getDataWithRequest () {
-    const request = new XMLHttpRequest();
-    const url = "https://jsonplaceholder.typicode.com/users"
-    request.open('GET', url);
-    request.send();
-    request.onload = () => {
-        console.log(request.response)
-    }
-}
+// function renderPost(){
+   
+//     let postContainer = document.getElementById('users')
+//     postContainer.innerHTML = ''
+//     users.forEach((user) =>{
+//         let postElement = document.createElement('div')
+//         postElement.className = 'card mb-3'
+    
+//         postElement.innerHTML = `
+//             <div class='card-body'>
+//                 <h3 class="card-title">${user.name}</h3>
+//                 <p class="card-text">${user.email}</p>
+//                 <p class="card-text">${user.address.street}</p>
+//                 <p class="card-text">${user.website}</p>
+//             </div>    
+//         `
+//         postContainer.appendChild(postElement)
+//     })
+// }
+// Promise : resolved/rejected
+// http methods: GET, PUT, DELETE
