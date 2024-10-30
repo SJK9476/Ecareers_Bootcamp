@@ -29,7 +29,7 @@ def get_quizzes():
     return jsonify(data);
 
 
-# Below is the API to retrieve the correct questions for the quiz selected
+# Below is the API to retrieve the correct questions and corresponding answer choices for the quiz selected
 
 @app.route('/api/quizzes/<int:quiz_id>/questions', methods=['GET'])
 @cross_origin(origins="*")
