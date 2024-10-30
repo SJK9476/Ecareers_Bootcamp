@@ -4,7 +4,7 @@
 //let users = []
 document.getElementById('blogForm').addEventListener('submit', (e)=>{
     e.preventDefault();
-    const url = 'https://jsonplaceholder.typicode.com/users'
+    const url = 'http://127.0.0.1:5002/data'
     fetch(url)
     .then(response => response.json())
      .then(data => {
@@ -12,15 +12,18 @@ document.getElementById('blogForm').addEventListener('submit', (e)=>{
         
          if(data.length > 0){
             const newTable = document.createElement("table")
-            newTable.innerHTML = "<thead><th>User Name</th><th>Email</th></thead>"
+            newTable.innerHTML = "<thead><th>Employee Name</th><th>Employee Department</th><th>Salary</th></thead>"
              data.forEach((user) =>{
                 const newRow = document.createElement("tr")
                 const tdName = document.createElement("td")
-                const tdEmail = document.createElement("td")
-                tdName.textContent = user.name
-                tdEmail.textContent = user.email
+                const tdDepartment = document.createElement("td")
+                const tdSalary = document.createElement("td")
+                tdName.textContent = user.emp_name
+                tdDepartment.textContent = user.emp_dept
+                tdSalary.textContent = user.emp_salary
                 newRow.appendChild(tdName)
-                newRow.appendChild(tdEmail)
+                newRow.appendChild(tdDepartment)
+                newRow.appendChild(tdSalary)
                 newTable.appendChild(newRow)
             })
             let userContainer = document.getElementById('users')
