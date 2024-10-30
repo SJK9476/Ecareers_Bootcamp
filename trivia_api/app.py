@@ -67,5 +67,22 @@ def get_questions(quiz_id):
 
     return jsonify(list(questions.values()));
 
+@app.route('/api/submit', mehtods=['POST'])
+@cross_origin(origins="*")
+def calc_score():
+    connection = create_connection()
+    cur = connection.cursor()
+    answers = request.json['answers']
+    score = 0
+    for answer in answers:
+        question_id = answer['question_id']
+        choice_id = answer['choice_id']
+        cur.execute('''SELECT is_correct FROM choices where id = %s and question_id = %s''', (choice_id, question_id))
+        result = cur.fetchone()
+        if result:
+            score += 1
+    return jsonify({"score": score})
+    
+
 if __name__ == '__main__':
     app.run()
