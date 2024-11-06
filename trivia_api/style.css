@@ -1,0 +1,29 @@
+:root {
+    --bg-pink: #f8c7cc !important;
+    --bg-light-green: #81a684 !important;
+    --bg-medium-green: #57886c !important;
+    --bg-dark-green: #466060 !important;
+}
+
+body {
+    background-color: var(--bg-pink);
+}
+
+#quiz-1 {
+    background-color: var(--bg-light-green);
+    border: solid 1px var(--bg-medium-green);
+}
+
+#quiz-2 {
+    background-color: var(--bg-medium-green);
+    border: solid 1px var(--bg-dark-green);
+}
+
+#quiz-3 {
+    background-color: var(--bg-dark-green);
+    border: solid 1px var(--bg-light-green);
+}
+
+#quiz-1:hover, #quiz-2:hover, #quiz-3:hover {
+    opacity: .8;
+}
