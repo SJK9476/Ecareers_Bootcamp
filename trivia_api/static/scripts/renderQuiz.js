@@ -1,7 +1,7 @@
 import {renderQuizQuestions, returnHome, getCorrectAnswers} from './triviaFunctions.js';
 
-renderQuizQuestions(1);
-getCorrectAnswers(1);
+renderQuizQuestions(quizId);
+getCorrectAnswers(quizId);
 
 console.log(getCorrectAnswers(1));
 

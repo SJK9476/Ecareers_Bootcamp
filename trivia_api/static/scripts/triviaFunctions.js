@@ -1,7 +1,7 @@
 export { renderQuizQuestions, returnHome, getCorrectAnswers};
 
-function renderQuizQuestions(n) {
-    const url = 'http://127.0.0.1:5000/api/quizzes/' + n + '/questions';
+function renderQuizQuestions(quizId) {
+    const url = 'http://127.0.0.1:5000/api/quizzes/' + quizId + '/questions';
     
     fetch(url)
     .then(response => response.json())
@@ -94,12 +94,12 @@ function renderQuizQuestions(n) {
 }
 
 function returnHome() {
-    window.open('./index.html', '_self');
+    window.open('http://127.0.0.1:5000/', '_self');
 }
 
-function getCorrectAnswers(n) {
+function getCorrectAnswers(quizId) {
     let correctAnswers = [];
-    const url = 'http://127.0.0.1:5000/api/quizzes/' + n + '/questions';
+    const url = 'http://127.0.0.1:5000/api/quizzes/' + quizId + '/questions';
     fetch(url)
     .then(response => response.json())
     .then(data => {

@@ -16,7 +16,20 @@ def create_connection():
     return connection
 
 
+
+
+# Routes to each page (quiz options, quiz, and results)
+
+@app.route('/', methods=['GET'])
+def renderQuizOptions():
+    return render_template('index.html')
+
+@app.route('/quiz.html', methods=['GET'])
+def renderQuiz():
+    return render_template('quiz.html')
+
 # Below is the API to retreive the possible quiz options
+
 
 @app.route('/api/quizzes', methods=['GET'])
 @cross_origin(origins="*")
