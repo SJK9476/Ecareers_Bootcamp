@@ -1,4 +1,5 @@
-import {renderQuizQuestions, returnHome, getCorrectAnswers} from './triviaFunctions.js';
+import {renderQuizQuestions, returnHome, getCorrectAnswers} from './trivia_api/static/scripts/triviaFunctions.js';
+
 
 renderQuizQuestions(quizId);
 getCorrectAnswers(quizId);
@@ -21,3 +22,4 @@ document.getElementById('return-home').addEventListener('click', returnHome);
 
 
 
+ 

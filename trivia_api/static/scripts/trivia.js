@@ -24,7 +24,6 @@ function renderQuizOptions() {
 renderQuizOptions();
 
 function openQuiz(event) {
-    const quizId = event.target.id.split('-')[1];
-    console.log(quizId);
-    window.open(`./quiz.html`, '_self');
+  console.log(event.target.id);
+  
 }
