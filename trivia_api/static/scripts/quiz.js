@@ -1,145 +1,122 @@
-let globalCorrectAnswers = [];
+const apiURL = "http://127.0.0.1:5000/api";
 
-function renderQuizOptions() {
-    const url = 'http://127.0.0.1:5000/api/quizzes';
+async function loadQuizOptions() {
+  const quizList = document.getElementById("quiz-list");
 
-    fetch(url)
-      .then(response => response.json())
-      .then(data => {
-        if (data.length > 0) {
-          const title = document.getElementById('title');
-          title.innerHTML = '';
-          title.innerHTML = 'Choose a quiz below to get started:';
-          const quizContainer = document.getElementById('quiz-container');
-          quizContainer.innerHTML = '';
-          
-          data.forEach((quiz) => {
-            const button = document.createElement('button');
-            button.className = 'btn btn-primary justify-content-center p-4 m-2 w-50';
-            button.id = 'quiz-' + quiz.id;
-            button.innerHTML = quiz.title + '<br><br>' + quiz.quiz_description;
-  
-            // Add click event listener directly to the button
-            button.addEventListener('click', () => {
-              renderQuiz(quiz.id);
-              getCorrectAnswers(quiz.id);
-              displayCorrectAnswers(quiz.id);
-            }); 
-  
-            quizContainer.appendChild(button);
-          });
-        }
+  try {
+    const response = await fetch(`${apiURL}/quizzes`);
+    const data = await response.json();
+
+    console.log(data);
+
+    data.forEach((quiz) => {
+      const button = document.createElement("button");
+      button.className = "btn btn-primary justify-content-center p-4 m-2 w-50";
+      button.id = `quiz-${quiz.id}`;
+      button.innerHTML = quiz.title + "<br><br>" + quiz.quiz_description;
+
+      // Add click event listener directly to the button
+      button.addEventListener("click", () => {
+        window.location.href = `quiz.html?quiz_id=${quiz.id}`;
       });
+
+      quizList.appendChild(button);
+    });
+  } catch (error) {
+    console.error("Failed to load quizzes:", error);
   }
+}
 
-renderQuizOptions();
+async function loadQuiz(quizId) {
+  const quizForm = document.getElementById("quiz-form");
+  try {
+      const response = await fetch(`${apiURL}/quizzes/${quizId}/questions`);
+      const data = await response.json();
 
-function renderQuiz(quizId) {
-  const url = 'http://127.0.0.1:5000/api/quizzes/' + quizId + '/questions';
+      console.log(data);
 
-  const returnButton = document.getElementById('back');
-  returnButton.classList.remove('d-none');
-
-  fetch(url).then(reponse => reponse.json())
-  .then(data => {
-    if (data.length > 0) {
-      const title = document.getElementById('title');
-      title.innerHTML = '';
-
-      if (quizId === 1) {
-        title.innerHTML = 'Welcome to the Video Game Trivia Quiz! Have a go at the questions below and see how you do!';
-      } else if (quizId === 2) {
-        title.innerHTML = 'Welcome to the Sports Trivia Quiz! Have a go at the questions below and see how you do!';
-      } else if (quizId === 3) {
-        title.innerHTML = 'Welcome to the Comic Book Trivia Quiz! Have a go at the questions below and see how you do!';
+      if (quizId === "1") {
+        document.getElementById("quiz-title").textContent = `Video Game Trivia`;
+      } else if (quizId === "2") {
+        document.getElementById("quiz-title").textContent = `Sports Trivia`;
+      } else if (quizId === "3") {
+        document.getElementById("quiz-title").textContent = `Comic Book Trivia`;
       }
-
-      const quizContainer = document.getElementById('quiz-container');
-      quizContainer.innerHTML = '';
-
+      
       data.forEach((question) => {
-        const questionContainer = document.createElement('div');
-        questionContainer.className = 'question-container w-50 m-auto border border-3 rounded border-black mb-3 bg-primary-subtle p-2';
-        const questionText = question.question_text;
-        const choice1 = question.choices[0].choice_text;
-        const choice2 = question.choices[1].choice_text;
-        const choice3 = question.choices[2].choice_text;
-        const choice4 = question.choices[3].choice_text;
+        const questionElement = document.createElement("div");
+        questionElement.className = "question w-75 text-center mb-3 mt-3 p-3 bg-danger mx-auto rounded border border-2 border-black";
 
-        questionContainer.innerHTML = `
-          <p class="mt-3">${questionText}</p>
+        const questionText = document.createElement("p");
+        questionText.innerHTML = question.question_text;
+        questionText.className = "question-text text-light";
+        questionElement.appendChild(questionText);
 
-                  <div class="row mb-3 mx-auto">
-                      <div class="col-sm-6">
-                          <div class="form-check ">
-                          <input class="form-check-input" type="radio" name="radioGroup" id="choice1" value="${choice1}">
-                          <label class="form-check-label" for="choice1">   
+        const choicesDiv = document.createElement("div");
+        choicesDiv.className = "choices d-flex flex-wrap justify-content-center gap-5";
 
-                              ${choice1}
-                          </label>
-                          </div>
-                          <div class="form-check">
-                          <input class="form-check-input" type="radio"   
-                      name="radioGroup" id="choice2" value="${choice2}">
-                          <label class="form-check-label" for="choice2">   
+        question.choices.forEach((choice) => {
+          const choiceLabel = document.createElement("label");
+          choiceLabel.className = 'text-light';
+          const choiceInput = document.createElement("input");
+          choiceInput.className = 'mx-2';
+          choiceInput.type = 'radio';
+          choiceInput.name = `question-${question.question_id}-choice-${choice.choice_id}`;
+          choiceInput.value = choice.choice_id;
+          choiceLabel.appendChild(choiceInput);
+          choiceLabel.appendChild(document.createTextNode(choice.choice_text));
+          choicesDiv.appendChild(choiceLabel);
+          
+        });
 
-                              ${choice2}
-                          </label>
-                          </div>
-                      </div>
-                      <div class="col-sm-6">
-                          <div class="form-check">
-                          <input class="form-check-input" type="radio" name="radioGroup" id="choice3" value="${choice3}">
-                          <label class="form-check-label" for="choice3">   
+        questionElement.appendChild(choicesDiv);
+        quizForm.appendChild(questionElement);
+        })
 
-                              ${choice3}
-                          </label>
-                          </div>
-                          <div class="form-check">
-                          <input class="form-check-input" type="radio" name="radioGroup" id="choice4" value="${choice4}">
-                          <label class="form-check-label" for="choice4">   
-
-                              ${choice4}
-                          </label>
-                          </div>
-                      </div>
-                  </div>
-
-                  <button class="btn btn-primary submit" id="submit">Submit</button>
-
-        `;
-
-        quizContainer.appendChild(questionContainer);
-      }) 
-    }
-  })
-}
-
-
-async function getCorrectAnswers(quizId) {
-  const url = 'http://127.0.0.1:5000/api/quizzes/' + quizId + '/questions';
-  const response = await fetch(url);
-  const data = await response.json();
-
-  let correctAnswers = [];
-
-  data.forEach((question) => {
-    question.choices.forEach((choice) => {
-      if (choice.is_correct === 1) {
-        correctAnswers.push(choice.choice_text);
-      }
-    })
     
-  })
-    return correctAnswers;
- 
+  } catch (error) {
+      console.error("Error loading questions:", error);
+  }
 }
 
-async function displayCorrectAnswers(quizId) {
-  const correctAnswers = await getCorrectAnswers(quizId);
-  globalCorrectAnswers = correctAnswers;
- 
+async function submitQuiz() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const quizId = urlParams.get('quiz_id');
+
+  const answers = Array.from(document.querySelectorAll("input[type='radio']:checked")).map(input =>{
+      console.log(input.name)
+      const [question, questionId, choice, choiceId] = input.name.split('-');
+      return{question_id: parseInt(questionId), choice_id: parseInt(input.value)};
+  });
+
+
+  try {
+
+      console.log(answers)
+      const response = await fetch(`${apiURL}/submit`, {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ quiz_id: quizId, answers: answers })
+      });
+      const result = await response.json();
+
+      console.log(result);
+
+      localStorage.setItem('score', result.score);
+      localStorage.setItem('totalQuestions', result.total_questions);
+
+      setTimeout(() => {
+        window.location.href = 'result.html'; 
+    }, 1000);
+      
+  } catch (error) {
+      console.error("Error submitting quiz:", error);
+  }
 }
 
-console.log(globalCorrectAnswers);
-
+function displayScore(score, totalQuestions) {
+  const scoreMessage = document.getElementById("score-message");
+  scoreMessage.textContent = `You got ${score}/${totalQuestions} correct.`;
+}

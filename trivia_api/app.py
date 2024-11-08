@@ -22,7 +22,15 @@ def create_connection():
 def index():
     return render_template('index.html')
 
+@app.route('/quiz.html', methods=['GET'])
+@cross_origin(origins="*")
+def quiz():
+    return render_template('quiz.html')
 
+@app.route('/result.html', methods=['GET'])
+@cross_origin(origins="*")
+def result():
+    return render_template('result.html')
 # Below is the API to retreive the possible quiz options
 
 
@@ -64,6 +72,7 @@ def get_questions(quiz_id):
         question_id = row['question_id']
         if question_id not in questions:
             questions[question_id] = {
+                'question_id': row['question_id'],
                 'question_text': row['question_text'],
                 'choices': []
             }
@@ -81,15 +90,23 @@ def calc_score():
     connection = create_connection()
     cur = connection.cursor()
     answers = request.json['answers']
+    quiz_id = request.json['quiz_id']
     score = 0
+    total_questions = 0
     for answer in answers:
         question_id = answer['question_id']
         choice_id = answer['choice_id']
+        print(f"Checking answer: questions_id={question_id}, choice_id={choice_id}")
         cur.execute('''SELECT is_correct FROM choices where id = %s and question_id = %s''', (choice_id, question_id))
         result = cur.fetchone()
+        print(f"Database result: {result}")
         if result is not None and result[0] == 1:
             score += 1
-    return jsonify({"score": score})
+        total_questions += 1
+
+    cur.execute('''SELECT COUNT(*) FROM questions WHERE quiz_id = %s''', (quiz_id,))
+    total_questions = cur.fetchone()[0]
+    return jsonify({"score": score, "total_questions": total_questions})
     
 
 if __name__ == '__main__':
